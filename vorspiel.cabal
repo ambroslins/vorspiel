@@ -37,7 +37,16 @@ test-suite spec
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
-  build-tool-depends:  hspec-discover:hspec-discover >=2.7.0
-  build-depends:       vorspiel,
-                       hspec >=2.7.0
+  build-tool-depends:  hspec-discover:hspec-discover
+  build-depends:       vorspiel
+                     , hspec
   other-modules:       ListSpec
+
+test-suite doctests
+  import:              common-options
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Doctests.hs
+  build-depends:       vorspiel
+                     , doctest
+                     , Glob

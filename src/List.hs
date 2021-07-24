@@ -114,6 +114,12 @@ import Prelude
     (++),
   )
 
+-- | \(\mathcal{0}(1)\). Extract the first element of a list, or `Nothing` if empty.
+--
+-- >>> head [1, 2, 3]
+-- Just 1
+-- >>> head []
+-- Nothing
 head :: [a] -> Maybe a
 head [] = Nothing
 head (x : _) = Just x
