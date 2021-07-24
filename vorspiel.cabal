@@ -40,3 +40,4 @@ test-suite spec
   build-tool-depends:  hspec-discover:hspec-discover >=2.7.0
   build-depends:       vorspiel,
                        hspec >=2.7.0
+  other-modules:       ListSpec
