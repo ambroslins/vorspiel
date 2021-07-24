@@ -27,7 +27,7 @@ common common-options
 
 library
   import:              common-options
-  exposed-modules:     MyLib
+  exposed-modules:     List
   -- other-modules:
   -- other-extensions:
   hs-source-dirs:      src
