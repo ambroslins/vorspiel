@@ -32,8 +32,11 @@ library
   -- other-extensions:
   hs-source-dirs:      src
 
-test-suite vorspiel-test
+test-suite spec
   import:              common-options
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
-  main-is:             MyLibTest.hs
+  main-is:             Spec.hs
+  build-tool-depends:  hspec-discover:hspec-discover >=2.7.0
+  build-depends:       vorspiel,
+                       hspec >=2.7.0
