@@ -9,4 +9,5 @@ main = do
   sourceFiles <- glob "src/**/*.hs"
   doctest $
     "-XNoImplicitPrelude" :
+    "-XLambdaCase" :
     sourceFiles

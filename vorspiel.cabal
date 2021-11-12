@@ -24,6 +24,7 @@ common common-options
 
   default-language:    Haskell2010
   default-extensions:  NoImplicitPrelude
+                     , LambdaCase
 
 library
   import:              common-options
