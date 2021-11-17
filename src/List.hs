@@ -130,18 +130,9 @@ module List
 where
 
 import qualified Data.List
-import Data.Maybe (Maybe (..))
-import GHC.List (foldl', foldr)
+import GHC.List (foldl')
 import qualified GHC.List
-import Prelude
-  ( Bool (..),
-    Num (..),
-    Ord (..),
-    Ordering (..),
-    max,
-    min,
-    (++),
-  )
+import Vorspiel.Prelude
 
 -- $setup
 -- >>> import Prelude (even, mod)
@@ -212,7 +203,7 @@ init (x : xs) = Just (go x xs)
 -- >>> sum []
 -- 0
 sum :: Num a => [a] -> a
-sum = foldl' (+) 0
+sum = getSum . foldMap' Sum
 
 -- | \(\mathcal{O}(n)\). Compute the product of all elements in the list
 --
@@ -222,7 +213,7 @@ sum = foldl' (+) 0
 -- >>> product []
 -- 1
 product :: Num a => [a] -> a
-product = foldl' (*) 1
+product = getProduct . foldMap' Product
 
 withCons :: (a -> [a] -> b) -> [a] -> Maybe b
 withCons f = \case

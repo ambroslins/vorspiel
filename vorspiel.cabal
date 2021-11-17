@@ -29,6 +29,7 @@ common common-options
 library
   import:              common-options
   exposed-modules:     List
+                     , Vorspiel.Prelude
   -- other-modules:
   -- other-extensions:
   hs-source-dirs:      src
