@@ -10,4 +10,5 @@ main = do
   doctest $
     "-XNoImplicitPrelude" :
     "-XLambdaCase" :
+    "-XImportQualifiedPost" :
     sourceFiles

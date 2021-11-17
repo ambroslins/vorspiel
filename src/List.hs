@@ -1,3 +1,10 @@
+-- |
+-- Module      : List
+-- Copyright   : (c) 2021, Ambros Lins
+-- License     : BSD-3-Clause
+-- Maintainer  : ambros.lins@gmail.com
+--
+-- Functions to work with lists.
 module List
   ( -- * Accessors
 
@@ -129,9 +136,9 @@ module List
   )
 where
 
-import qualified Data.List
+import Data.List qualified
 import GHC.List (foldl')
-import qualified GHC.List
+import GHC.List qualified
 import Vorspiel.Prelude
 
 -- $setup
