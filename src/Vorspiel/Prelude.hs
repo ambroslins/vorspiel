@@ -5,6 +5,7 @@ module Vorspiel.Prelude
     module Data.Foldable,
     module Data.Monoid,
     module Data.List.NonEmpty,
+    module Data.Void,
   )
 where
 
@@ -12,6 +13,7 @@ import Data.Foldable (foldMap')
 import Data.Function (on, (&))
 import Data.List.NonEmpty (NonEmpty (..))
 import Data.Monoid (Product (..), Sum (..))
+import Data.Void (Void)
 import Numeric.Natural (Natural)
 import Prelude
   ( Applicative (..),
