@@ -43,6 +43,7 @@ import Prelude
     RealFrac (..),
     Semigroup (..),
     Show (..),
+    String,
     Word,
     const,
     curry,

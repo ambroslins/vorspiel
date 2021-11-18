@@ -77,6 +77,11 @@ module Vorspiel
     -- ** Applicative
     Prelude.Applicative (..),
 
+    -- ** Alternative
+    Applicative.Alternative (empty, (<|>)),
+    Applicative.many,
+    some,
+
     -- ** Monad
     Prelude.Monad (..),
     (Prelude.=<<),
@@ -118,17 +123,21 @@ module Vorspiel
   )
 where
 
+import Control.Applicative qualified as Applicative
 import Data.Foldable qualified as Foldable
 import Data.Function qualified as Function
-import Data.List.NonEmpty (NonEmpty (..))
 import Data.List.NonEmpty qualified as NonEmpty
 import Data.Text qualified as Text
 import Data.Text.IO qualified as Text.IO
 import Data.Void (Void, absurd)
-import Numeric.Natural (Natural)
 import Text.Read (Read, readMaybe)
+import Vorspiel.Prelude
 import Prelude qualified
 
 -- | Parse a string using the Read instance. Succeeds if there is exactly one valid result
-read :: Read a => Prelude.String -> Prelude.Maybe a
+read :: Read a => String -> Maybe a
 read = readMaybe
+
+-- | One or more
+some :: Applicative.Alternative f => f a -> f (NonEmpty a)
+some v = (:|) <$> v <*> Applicative.many v
