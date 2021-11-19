@@ -75,7 +75,7 @@ module Vorspiel
     Text.stripStart,
     Text.stripEnd,
 
-    -- ** Lines and words
+    -- *** Lines and words
     Text.lines,
     Text.words,
     Text.unlines,
@@ -263,7 +263,10 @@ import Vorspiel.Prelude
 import Prelude qualified
 
 -- | Identity function.
--- @identity x = x@
+--
+-- @
+-- identity x = x
+-- @
 identity :: a -> a
 identity x = x
 
