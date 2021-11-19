@@ -19,6 +19,8 @@ common common-options
   build-depends:       base ^>=4.14.1.0
                      , text
                      , containers
+                     , hashable
+                     , unordered-containers
 
   ghc-options:         -Wall
                        -Wcompat
@@ -35,8 +37,10 @@ library
                      , List
                      , Map
                      , IntMap
+                     , HashMap
                      , Set
                      , IntSet
+                     , HashSet
                      , Sequence
   other-modules:       Vorspiel.Prelude
   -- other-extensions:

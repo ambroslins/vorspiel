@@ -94,10 +94,12 @@ module Vorspiel
     -- ** Sets
     Set,
     IntSet,
+    HashSet,
 
     -- ** Maps
     Map,
     IntMap,
+    HashMap,
 
     -- ** Sequence
     Sequence.Seq (..),
@@ -111,6 +113,7 @@ module Vorspiel
     -- * Basic classes
     Prelude.Eq (..),
     Prelude.Ord (..),
+    Hashable.Hashable (..),
     Ord.Down (..),
     Prelude.Enum,
     Prelude.Bounded,
@@ -239,6 +242,7 @@ import Data.Foldable qualified as Foldable
 import Data.Function qualified as Function
 import Data.Functor qualified as Functor
 import Data.Functor.Contravariant as Contravariant
+import Data.Hashable qualified as Hashable
 import Data.Int qualified
 import Data.List.NonEmpty qualified as NonEmpty
 import Data.Ord qualified as Ord
@@ -247,6 +251,8 @@ import Data.Text qualified as Text
 import Data.Text.IO qualified as Text.IO
 import Data.Void (absurd)
 import Data.Word qualified
+import HashMap (HashMap)
+import HashSet (HashSet)
 import IntMap (IntMap)
 import IntSet (IntSet)
 import Map (Map)
