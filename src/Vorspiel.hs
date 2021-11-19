@@ -1,5 +1,4 @@
 -- |
--- Module      : Vorspiel
 -- Copyright   : (c) 2021, Ambros Lins
 -- License     : BSD-3-Clause
 -- Maintainer  : ambros.lins@gmail.com
@@ -91,6 +90,19 @@ module Vorspiel
     Text.stripPrefix,
     Text.stripSuffix,
     Text.commonPrefixes,
+
+    -- ** Sets
+    Set,
+    IntSet,
+
+    -- ** Maps
+    Map,
+    IntMap,
+
+    -- ** Sequence
+    Sequence.Seq (..),
+    (Sequence.<|),
+    (Sequence.|>),
 
     -- ** Void
     Void,
@@ -235,6 +247,11 @@ import Data.Text qualified as Text
 import Data.Text.IO qualified as Text.IO
 import Data.Void (absurd)
 import Data.Word qualified
+import IntMap (IntMap)
+import IntSet (IntSet)
+import Map (Map)
+import Sequence qualified
+import Set (Set)
 import Text.Read (Read, readMaybe)
 import Vorspiel.Prelude
 import Prelude qualified

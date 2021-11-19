@@ -17,7 +17,8 @@ extra-source-files:  CHANGELOG.md
 
 common common-options
   build-depends:       base ^>=4.14.1.0
-                     , text 
+                     , text
+                     , containers
 
   ghc-options:         -Wall
                        -Wcompat
@@ -32,6 +33,11 @@ library
   import:              common-options
   exposed-modules:     Vorspiel
                      , List
+                     , Map
+                     , IntMap
+                     , Set
+                     , IntSet
+                     , Sequence
   other-modules:       Vorspiel.Prelude
   -- other-extensions:
   hs-source-dirs:      src
