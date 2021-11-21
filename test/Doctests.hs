@@ -11,4 +11,5 @@ main = do
     "-XNoImplicitPrelude" :
     "-XLambdaCase" :
     "-XImportQualifiedPost" :
+    "-XBangPatterns" :
     sourceFiles

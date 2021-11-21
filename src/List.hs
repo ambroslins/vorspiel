@@ -27,25 +27,15 @@ module List
     -- * Transformations
     Data.List.map,
     Data.List.reverse,
+    Data.List.inits,
+    Data.List.tails,
     Data.List.intersperse,
     Data.List.intercalate,
     Data.List.transpose,
-    Data.List.subsequences,
-    Data.List.permutations,
-    Data.List.inits,
-    Data.List.tails,
+    subsequences,
+    permutations,
 
     -- * Reductions (folds)
-    foldr,
-    foldl',
-
-    -- ** Aggregate functions
-    GHC.List.and,
-    GHC.List.or,
-    GHC.List.any,
-    GHC.List.all,
-    sum,
-    product,
     maximum,
     minimum,
     maximumBy,
@@ -136,8 +126,9 @@ module List
 where
 
 import Data.List qualified
-import GHC.List (foldl')
 import GHC.List qualified
+import Vorspiel.Foldable (withNonEmpty)
+import Vorspiel.Foldable qualified as Foldable
 import Vorspiel.Prelude
 
 -- $setup
@@ -171,8 +162,9 @@ head (x : _) = Just x
 -- >>> last []
 -- Nothing
 last :: [a] -> Maybe a
-last = foldl' (\_ x -> Just x) Nothing
-{-# INLINE last #-}
+last [] = Nothing
+last [x] = Just x
+last (_ : xs) = last xs
 
 -- | \(\mathcal{O}(1)\). The elements after the head of a list, or `Nothing` if empty.
 --
@@ -201,44 +193,19 @@ init (x : xs) = Just (go x xs)
     go _ [] = []
     go y (z : zs) = y : go z zs
 
--- | \(\mathcal{O}(n)\). Compute the sum of all elements in the list
---
--- >>> sum [1, 2, 3, 4]
--- 10
---
--- >>> sum []
--- 0
-sum :: Num a => [a] -> a
-sum = getSum . foldMap' Sum
-
--- | \(\mathcal{O}(n)\). Compute the product of all elements in the list
---
--- >>> product [1, 2, 3, 4]
--- 24
---
--- >>> product []
--- 1
-product :: Num a => [a] -> a
-product = getProduct . foldMap' Product
-
-withCons :: (a -> [a] -> b) -> [a] -> Maybe b
-withCons f = \case
-  [] -> Nothing
-  (x : xs) -> Just (f x xs)
-
 -- | \(\mathcal{O}(1)\). The largest element of a list, or `Nothing` if empty.
 --
 -- >>> maximum [1, 2, 3]
 -- Just 3
 maximum :: (Ord a) => [a] -> Maybe a
-maximum = withCons (foldl' max)
+maximum = withNonEmpty Foldable.maximum
 
 -- | \(\mathcal{O}(1)\). The least element of a list, or `Nothing` if empty.
 --
 -- >>> minimum [1, 2, 3]
 -- Just 1
 minimum :: (Ord a) => [a] -> Maybe a
-minimum = withCons (foldl' min)
+minimum = withNonEmpty Foldable.minimum
 
 -- | \(\mathcal{O}(1)\). The first element of a list matching the predicate, or `Nothing` if there is no such element.
 --
@@ -252,19 +219,25 @@ find = Data.List.find
 -- >>> maximumBy (\x y -> compare (x `mod` 3) (y `mod` 3)) [1, 2, 3, 4, 5, 6]
 -- Just 5
 maximumBy :: (a -> a -> Ordering) -> [a] -> Maybe a
-maximumBy cmp = withCons (foldl' max')
-  where
-    max' y z = case cmp y z of
-      GT -> y
-      _ -> z
+maximumBy cmp = withNonEmpty (Foldable.maximumBy cmp)
 
 -- | \(\mathcal{O}(1)\). The least element of a list with respect to the given comparison function, or `Nothing` if empty.
 --
 -- >>> minimumBy (\x y -> compare (x `mod` 3) (y `mod` 3)) [1, 2, 3, 4, 5, 6]
 -- Just 3
 minimumBy :: (a -> a -> Ordering) -> [a] -> Maybe a
-minimumBy cmp = withCons (foldl' min')
-  where
-    min' y z = case cmp y z of
-      GT -> z
-      _ -> y
+minimumBy cmp = withNonEmpty (Foldable.minimumBy cmp)
+
+-- | The 'subsequences' function returns the list of all subsequences of the argument.
+--
+-- >>> subsequences "abc"
+-- "" :| ["a","b","ab","c","ac","bc","abc"]
+subsequences :: [a] -> NonEmpty [a]
+subsequences = unsafeNonEmpty . Data.List.subsequences
+
+-- | The 'permutations' function returns the list of all permutations of the argument.
+--
+-- >>> permutations "abc"
+-- "abc" :| ["bac","cba","bca","cab","acb"]
+permutations :: [a] -> NonEmpty [a]
+permutations = unsafeNonEmpty . Data.List.permutations

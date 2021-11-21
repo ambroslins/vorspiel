@@ -21,6 +21,7 @@ common common-options
                      , containers
                      , hashable
                      , unordered-containers
+                     , semigroupoids
 
   ghc-options:         -Wall
                        -Wcompat
@@ -30,11 +31,13 @@ common common-options
   default-extensions:  NoImplicitPrelude
                      , LambdaCase
                      , ImportQualifiedPost
+                     , BangPatterns
 
 library
   import:              common-options
   exposed-modules:     Vorspiel
                      , List
+                     , NonEmpty
                      , Map
                      , IntMap
                      , HashMap
@@ -43,6 +46,7 @@ library
                      , HashSet
                      , Sequence
   other-modules:       Vorspiel.Prelude
+                     , Vorspiel.Foldable
   -- other-extensions:
   hs-source-dirs:      src
 
@@ -63,4 +67,7 @@ test-suite doctests
   main-is:             Doctests.hs
   build-depends:       vorspiel
                      , doctest
+                     , QuickCheck
+                     , quickcheck-instances
+                     , template-haskell
                      , Glob
