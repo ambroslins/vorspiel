@@ -31,6 +31,8 @@ module Vorspiel
 
     -- ** NonEmpty
     NonEmpty (..),
+    Foldable.nonEmpty,
+    Foldable.withNonEmpty,
     NonEmpty.head,
     NonEmpty.tail,
     NonEmpty.last,
@@ -152,8 +154,32 @@ module Vorspiel
     Bifunctor.Bifunctor (..),
 
     -- ** Foldable
-    Prelude.Foldable (foldr, foldMap),
-    Foldable.foldMap',
+    Prelude.Foldable
+      ( fold,
+        foldMap,
+        foldMap',
+        foldl',
+        foldr,
+        length,
+        toList
+      ),
+    Foldable.and,
+    Foldable.or,
+    Foldable.all,
+    Foldable.any,
+    Foldable.foldrM,
+    Foldable.foldlM,
+    Foldable.sum,
+    Foldable.product,
+
+    -- *** Foldable1
+    Foldable.Foldable1 (..),
+    Foldable.foldr1,
+    Foldable.foldl1',
+    Foldable.minimum,
+    Foldable.maximum,
+    Foldable.minimumBy,
+    Foldable.maximumBy,
 
     -- ** Traversable
     Prelude.Traversable (..),
@@ -238,13 +264,11 @@ import Control.Applicative qualified as Applicative
 import Control.Exception qualified as Exception
 import Control.Monad qualified as Monad
 import Data.Bifunctor qualified as Bifunctor
-import Data.Foldable qualified as Foldable
 import Data.Function qualified as Function
 import Data.Functor qualified as Functor
 import Data.Functor.Contravariant as Contravariant
 import Data.Hashable qualified as Hashable
 import Data.Int qualified
-import Data.List.NonEmpty qualified as NonEmpty
 import Data.Ord qualified as Ord
 import Data.Semigroup qualified as Semigroup
 import Data.Text qualified as Text
@@ -256,9 +280,11 @@ import HashSet (HashSet)
 import IntMap (IntMap)
 import IntSet (IntSet)
 import Map (Map)
+import NonEmpty qualified
 import Sequence qualified
 import Set (Set)
 import Text.Read (Read, readMaybe)
+import Vorspiel.Foldable qualified as Foldable
 import Vorspiel.Prelude
 import Prelude qualified
 

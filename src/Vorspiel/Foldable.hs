@@ -2,6 +2,7 @@ module Vorspiel.Foldable
   ( module Data.Foldable,
     module Data.Semigroup.Foldable,
     module Vorspiel.Foldable,
+    module Data.List.NonEmpty,
   )
 where
 
@@ -18,12 +19,14 @@ import Data.Foldable
     all,
     and,
     any,
+    asum,
     foldlM,
     foldrM,
     or,
   )
 import Data.Foldable qualified
-import Data.List.NonEmpty (NonEmpty (..), nonEmpty)
+import Data.List.NonEmpty (NonEmpty (..))
+import Data.List.NonEmpty qualified as NonEmpty
 import Data.Maybe (fromMaybe, maybe)
 import Data.Semigroup
   ( Product (..),
@@ -45,16 +48,33 @@ import Prelude
 -- >>> import Prelude (mod)
 -- >>> import Data.Ord (compare)
 
--- | A variant of 'foldr' for non-empty structures, and thus does not require abase case.
+-- | A variant of 'foldr' for non-empty structures, and thus does not require a base case.
 foldr1 :: Foldable1 f => (a -> a -> a) -> f a -> a
 foldr1 = Data.Foldable.foldr1
 
--- | A variant of 'fold'' for non-empty structures, and thus does not require abase case.
+-- | A variant of 'fold'' for non-empty structures, and thus does not require a base case.
 foldl1' :: Foldable1 f => (a -> a -> a) -> f a -> a
 foldl1' f = fromMaybe (error "foldl1") . Data.Foldable.foldl' mf Nothing
   where
     mf m y = Just $! maybe y (`f` y) m
 
+-- | Build a 'NonEmpty' list from some structure,  or return `Nothing` if the structure is empty.
+--
+-- >>> nonEmpty [1, 2, 3]
+-- Just (1 :| [2,3])
+--
+-- >>> nonEmpty []
+-- Nothing
+nonEmpty :: Foldable f => f a -> Maybe (NonEmpty a)
+nonEmpty = NonEmpty.nonEmpty . toList
+
+-- | Apply a function expecting a 'NonEmpty' list to some structure, or return `Nothing` if the structure is empty.
+--
+-- >>> withNonEmpty maximum [1, 2, 3]
+-- Just 3
+--
+-- >>> withNonEmpty maximum []
+-- Nothing
 withNonEmpty :: Foldable f => (NonEmpty a -> b) -> f a -> Maybe b
 withNonEmpty f = fmap f . nonEmpty . toList
 
