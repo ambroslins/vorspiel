@@ -226,6 +226,15 @@ module Vorspiel
     Prelude.Integral (..),
     Prelude.Fractional (..),
     Prelude.Floating (..),
+    Prelude.subtract,
+    Prelude.even,
+    Prelude.odd,
+    Prelude.gcd,
+    Prelude.lcm,
+    (Prelude.^),
+    (Prelude.^^),
+    Prelude.fromIntegral,
+    Prelude.realToFrac,
 
     -- * Miscellaneous functions
     identity,
