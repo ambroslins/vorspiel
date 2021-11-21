@@ -58,6 +58,7 @@ test-suite spec
   build-tool-depends:  hspec-discover:hspec-discover
   build-depends:       vorspiel
                      , hspec
+                     , QuickCheck
   other-modules:       ListSpec
 
 test-suite doctests
