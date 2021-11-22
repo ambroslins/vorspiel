@@ -58,7 +58,7 @@ foldl1' f = fromMaybe (error "foldl1") . Data.Foldable.foldl' mf Nothing
   where
     mf m y = Just $! maybe y (`f` y) m
 
--- | Build a 'NonEmpty' list from some structure,  or return `Nothing` if the structure is empty.
+-- | Build a 'NonEmpty' list from some structure, or return `Nothing` if the structure is empty.
 --
 -- >>> nonEmpty [1, 2, 3]
 -- Just (1 :| [2,3])
@@ -76,7 +76,7 @@ nonEmpty = NonEmpty.nonEmpty . toList
 -- >>> withNonEmpty maximum []
 -- Nothing
 withNonEmpty :: Foldable f => (NonEmpty a -> b) -> f a -> Maybe b
-withNonEmpty f = fmap f . nonEmpty . toList
+withNonEmpty f = fmap f . nonEmpty
 
 -- | Compute the sum of all elements of a structure.
 --
