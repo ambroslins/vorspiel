@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "src"
+      component: "lib:vorspiel"
+
+    - path: "test"
+      component: "vorspiel:test:spec"
+
+    - path: "test"
+      component: "vorspiel:test:doctests"
