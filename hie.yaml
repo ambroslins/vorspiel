@@ -6,5 +6,5 @@ cradle:
     - path: "test"
       component: "vorspiel:test:spec"
 
-    - path: "test"
+    - path: "test/Doctests.hs"
       component: "vorspiel:test:doctests"
