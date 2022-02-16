@@ -1,4 +1,6 @@
 dist-newstyle/
-.stack-work/
-
 *.local
+
+.stack-work/
+stack.yaml
+stack.yaml.lock
