@@ -5,7 +5,45 @@
 --
 -- This module exports safe functions from "Data.HashSet".
 module HashSet
-  ( module Data.HashSet,
+  ( -- * HashSet
+    HashSet,
+    null,
+    size,
+
+    -- * Construction
+    empty,
+    singleton,
+    fromList,
+
+    -- * Query
+    member,
+    isSubsetOf,
+
+    -- * Insert
+    insert,
+
+    -- * Update
+    delete,
+
+    -- * Combine
+    union,
+    unions,
+    difference,
+    intersection,
+
+    -- * Map
+    map,
+
+    -- * Fold
+    foldl',
+    foldr,
+
+    -- * Conversions
+    toMap,
+    fromMap,
+
+    -- * Filter
+    filter,
   )
 where
 
