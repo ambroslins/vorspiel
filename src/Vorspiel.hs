@@ -158,8 +158,10 @@ module Vorspiel
       ( fold,
         foldMap,
         foldMap',
+        foldl,
         foldl',
         foldr,
+        foldr',
         length,
         toList
       ),
@@ -175,7 +177,7 @@ module Vorspiel
     -- *** Foldable1
     Foldable.Foldable1 (..),
     Foldable.foldr1,
-    Foldable.foldl1',
+    Foldable.foldl1,
     Foldable.minimum,
     Foldable.maximum,
     Foldable.minimumBy,
@@ -275,7 +277,7 @@ import Control.Monad qualified as Monad
 import Data.Bifunctor qualified as Bifunctor
 import Data.Function qualified as Function
 import Data.Functor qualified as Functor
-import Data.Functor.Contravariant as Contravariant
+import Data.Functor.Contravariant qualified as Contravariant
 import Data.Hashable qualified as Hashable
 import Data.Int qualified
 import Data.Ord qualified as Ord
@@ -305,7 +307,7 @@ import Prelude qualified
 identity :: a -> a
 identity x = x
 
--- | Parse a string using the Read instance. Succeeds if there is exactly one valid result
+-- | Parse a string using the Read instance. Succeeds if there is exactly one valid result. Alias for 'readMaybe'.
 read :: Read a => String -> Maybe a
 read = readMaybe
 

@@ -11,8 +11,10 @@ import Data.Foldable
       ( fold,
         foldMap,
         foldMap',
+        foldl,
         foldl',
         foldr,
+        foldr',
         length,
         toList
       ),
@@ -27,7 +29,6 @@ import Data.Foldable
 import Data.Foldable qualified
 import Data.List.NonEmpty (NonEmpty (..))
 import Data.List.NonEmpty qualified as NonEmpty
-import Data.Maybe (fromMaybe, maybe)
 import Data.Semigroup
   ( Product (..),
     Sum (..),
@@ -38,9 +39,7 @@ import Prelude
     Num (..),
     Ord (..),
     Ordering,
-    error,
     fmap,
-    ($!),
     (.),
   )
 
@@ -52,11 +51,9 @@ import Prelude
 foldr1 :: Foldable1 f => (a -> a -> a) -> f a -> a
 foldr1 = Data.Foldable.foldr1
 
--- | A variant of 'fold'' for non-empty structures, and thus does not require a base case.
-foldl1' :: Foldable1 f => (a -> a -> a) -> f a -> a
-foldl1' f = fromMaybe (error "foldl1") . Data.Foldable.foldl' mf Nothing
-  where
-    mf m y = Just $! maybe y (`f` y) m
+-- | A variant of 'foldl' for non-empty structures, and thus does not require a base case.
+foldl1 :: Foldable1 f => (a -> a -> a) -> f a -> a
+foldl1 = Data.Foldable.foldl1
 
 -- | Build a 'NonEmpty' list from some structure, or return `Nothing` if the structure is empty.
 --
