@@ -41,15 +41,16 @@ library
   hs-source-dirs:      src
   exposed-modules:
     , Vorspiel
-    , List
-    , NonEmpty
-    , Map
-    , IntMap
     , HashMap
-    , Set
-    , IntSet
     , HashSet
+    , IntMap
+    , IntSet
+    , List
+    , Map
+    , NonEmpty
     , Sequence
+    , Set
+    , Text
 
   other-modules:
     , Vorspiel.Prelude
