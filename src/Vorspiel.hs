@@ -118,7 +118,7 @@ module Vorspiel
     Hashable.Hashable (..),
     Ord.Down (..),
     Prelude.Enum,
-    Prelude.Bounded,
+    Prelude.Bounded (minBound, maxBound),
     Prelude.Show (show),
     Prelude.Read,
     read,
