@@ -158,11 +158,8 @@ module Vorspiel
       ( fold,
         foldMap,
         foldMap',
-        foldl,
-        foldl',
-        foldr,
-        foldr',
         length,
+        null,
         toList
       ),
     Foldable.and,
