@@ -35,9 +35,10 @@ common common-options
 
   default-extensions:
     , NoImplicitPrelude
-    , LambdaCase
-    , ImportQualifiedPost
     , BangPatterns
+    , ImportQualifiedPost
+    , LambdaCase
+    , RankNTypes
 
 library
   import:              common-options
@@ -48,6 +49,7 @@ library
     , HashSet
     , IntMap
     , IntSet
+    , Lens
     , List
     , Map
     , NonEmpty
