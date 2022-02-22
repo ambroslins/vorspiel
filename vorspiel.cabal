@@ -4,14 +4,15 @@ cabal-version:       3.0
 
 name:                vorspiel
 version:             0.1.0.0
--- synopsis:
+synopsis:            Yet another alternative Prelude.
 -- description:
--- bug-reports:
+homepage:            https://github.com/ambroslins/vorspiel
+bug-reports:         https://github.com/ambroslins/vorspiel/issues
 license:             BSD-3-Clause
 license-file:        LICENSE
 author:              Ambros Lins
 maintainer:          ambros.lins@gmail.com
--- copyright:
+copyright:           2021-2022 Ambros Lins
 category:            Prelude
 extra-source-files:
   , README.md
