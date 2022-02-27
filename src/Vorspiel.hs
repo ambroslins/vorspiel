@@ -29,6 +29,12 @@ module Vorspiel
     -- ** Char
     Prelude.Char,
 
+    -- ** Tuple
+    Prelude.fst,
+    Prelude.snd,
+    Prelude.curry,
+    Prelude.uncurry,
+
     -- ** NonEmpty
     NonEmpty (..),
     Foldable.nonEmpty,
@@ -115,8 +121,8 @@ module Vorspiel
     -- * Basic classes
     Prelude.Eq (..),
     Prelude.Ord (..),
-    Hashable.Hashable (..),
     Ord.Down (..),
+    Hashable.Hashable (..),
     Prelude.Enum,
     Prelude.Bounded (minBound, maxBound),
     Prelude.Show (show),
@@ -225,6 +231,8 @@ module Vorspiel
     Prelude.Integral (..),
     Prelude.Fractional (..),
     Prelude.Floating (..),
+    Prelude.RealFrac (..),
+    Prelude.RealFloat (..),
     Prelude.subtract,
     Prelude.even,
     Prelude.odd,
