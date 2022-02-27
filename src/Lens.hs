@@ -24,6 +24,7 @@ lens :: (s -> a) -> (s -> b -> t) -> Lens s t a b
 lens sa sbt = \afb s -> sbt s <$> afb (sa s)
 
 -- $setup
+-- >>> import Vorspiel
 -- >>> sndLens = lens snd (\(x, _) y -> (x, y)) :: Lens (c, a) (c, b) a b
 
 -- | Get the value out of structure.
