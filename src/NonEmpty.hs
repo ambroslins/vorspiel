@@ -35,11 +35,15 @@ module NonEmpty
 
     -- * Construction
     singleton,
+    (Base.<|),
+    (|>),
 
     -- ** Unfold
     Base.unfoldr,
 
     -- ** Concatenation
+    Base.cons,
+    snoc,
     (++),
     concat,
     concatMap,
@@ -94,6 +98,14 @@ import Vorspiel.Prelude hiding (foldMap, foldMap', foldl', foldr)
 -- | Make a 'NonEmpty' list with a single element.
 singleton :: a -> NonEmpty a
 singleton x = x :| []
+
+-- | Append an element to the stream.
+(|>) :: [a] -> a -> NonEmpty a
+xs |> x = foldr Base.cons (singleton x) xs
+
+-- | Append an element to the end of a 'NonEmpty' list.
+snoc :: NonEmpty a -> a -> NonEmpty a
+snoc xs x = foldr Base.cons (singleton x) xs
 
 -- | Concatenate a 'NonEmpty' list of 'NonEmpty' lists.
 --

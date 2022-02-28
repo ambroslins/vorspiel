@@ -152,7 +152,6 @@ where
 
 import Data.Bifunctor (first)
 import Data.List qualified
-import Data.List.NonEmpty qualified as NonEmpty
 import GHC.List qualified
 import Vorspiel.Foldable (withNonEmpty)
 import Vorspiel.Foldable qualified as Foldable
@@ -348,16 +347,16 @@ minimumBy cmp = withNonEmpty (Foldable.minimumBy cmp)
 -- | \(\mathcal{O}(1)\). Prepend an element to the front of a list. Alias for (:|).
 --
 -- >>> cons 1 [2, 3]
--- 1 :| [2,3]
-cons :: a -> [a] -> NonEmpty a
-cons = (:|)
+-- [1,2,3]
+cons :: a -> [a] -> [a]
+cons = (:)
 
 -- | \(\mathcal{O}(n)\). Append an element to the end of a list.
 --
 -- >>> snoc [1, 2] 3
--- 1 :| [2,3]
-snoc :: [a] -> a -> NonEmpty a
-snoc xs x = foldr NonEmpty.cons (pure x) xs
+-- [1,2,3]
+snoc :: [a] -> a -> [a]
+snoc xs x = foldr (:) [x] xs
 
 -- | \(\mathcal{O}(n)\). Lazily compare the length of list with an `Int`.
 --

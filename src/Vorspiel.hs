@@ -43,6 +43,8 @@ module Vorspiel
     NonEmpty.tail,
     NonEmpty.last,
     NonEmpty.init,
+    (NonEmpty.<|),
+    (NonEmpty.|>),
 
     -- ** String
     Prelude.String,
