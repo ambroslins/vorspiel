@@ -1,5 +1,6 @@
 dist-newstyle/
 *.local
+.ghc.environment.*
 
 .stack-work/
 stack.yaml
