@@ -110,9 +110,7 @@ module Vorspiel
     HashMap,
 
     -- ** Sequence
-    Sequence.Seq (..),
-    (Sequence.<|),
-    (Sequence.|>),
+    Sequence.Seq,
 
     -- ** Void
     Void,
