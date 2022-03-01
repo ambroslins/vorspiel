@@ -39,6 +39,7 @@ common common-options
     , ImportQualifiedPost
     , LambdaCase
     , RankNTypes
+    , TypeApplications
 
 library
   import:              common-options

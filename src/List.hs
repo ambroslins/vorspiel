@@ -84,6 +84,7 @@ module List
 
     -- ** Filter
     Data.List.filter,
+    count,
     Data.List.delete,
     Data.List.deleteBy,
 
@@ -306,7 +307,7 @@ alter i f xs = if i < 0 then xs else go xs i
 --
 -- >>> imap (+) [1, 2, 3]
 -- [1,3,5]
-imap :: (Int -> a -> a) -> [a] -> [a]
+imap :: (Int -> a -> b) -> [a] -> [b]
 imap f = Data.List.zipWith f [0 ..]
 
 -- | \(\mathcal{O}(n)\). The largest element of a list, or `Nothing` if empty.
@@ -357,6 +358,13 @@ cons = (:)
 -- [1,2,3]
 snoc :: [a] -> a -> [a]
 snoc xs x = foldr (:) [x] xs
+
+-- | \(\mathcal{O}(n)\). Count all elements that satisfy the predicate.
+--
+-- >>> count even [1, 2, 3, 4, 5]
+-- 2
+count :: (a -> Bool) -> [a] -> Int
+count f xs = Data.List.length (Data.List.filter f xs)
 
 -- | \(\mathcal{O}(n)\). Lazily compare the length of list with an `Int`.
 --
