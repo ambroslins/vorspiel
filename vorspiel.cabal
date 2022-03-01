@@ -5,7 +5,11 @@ cabal-version:       3.0
 name:                vorspiel
 version:             0.1.0.0
 synopsis:            Yet another alternative Prelude.
--- description:
+description:
+  @vorpsiel@ is yet another alternative prelude.
+  These are my personal preferences and everything is subject to change at any time.
+  If you are looking for something stable, safe, tested and production ready use @relude@ instead.
+
 homepage:            https://github.com/ambroslins/vorspiel
 bug-reports:         https://github.com/ambroslins/vorspiel/issues
 license:             BSD-3-Clause
@@ -17,8 +21,13 @@ category:            Prelude
 extra-source-files:
   , README.md
   , CHANGELOG.md
+tested-with: 
+  GHC == 8.10.7 
+  GHC == 9.2.1
 
-tested-with: GHC ==8.10.7 || ==9.2.1
+source-repository head
+  type:     git
+  location: https://github.com/ambroslins/vorspiel
 
 common common-options
   default-language:    Haskell2010
