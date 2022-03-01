@@ -114,7 +114,6 @@ module Text
     isInfixOf,
 
     -- * Searching
-    elem,
     find,
 
     -- ** View Patterns
